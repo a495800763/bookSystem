@@ -4,11 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${application.config.webName}+ 登录页面"></title>
-
-    <link rel="stylesheet" href="layui-v2.5.6/layui/css/layui.css">
-    <script src="layui-v2.5.6/layui/layui.js" type="text/javascript"></script>
-    <script	src="jq/jquery.js" type="text/javascript"></script>
-    <script src="Vue/vue.min.js" type="text/javascript"></script>
+    <div th:include="/common/layui"></div>
+    <div th:include="/common/jq"></div>
     <script>
         $(function() {
             $("#name").focus();

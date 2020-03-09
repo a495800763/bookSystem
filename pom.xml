@@ -51,6 +51,26 @@
             <version>2.4</version>
             <classifier>jdk15</classifier>
         </dependency>
+        <!--add Shiro dependence-->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+        <!--add Shiro dependence-->
+        <!--add thymeleaf shiro tag -->
+        <dependency>
+            <groupId>com.github.theborakompanioni</groupId>
+            <artifactId>thymeleaf-extras-shiro</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        <!--add thymeleaf shiro tag -->
 
     </dependencies>
 

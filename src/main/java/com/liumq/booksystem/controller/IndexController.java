@@ -19,35 +19,30 @@ public class IndexController {
     private ServletContext servletContext;
 
     @RequestMapping("/")
-    public String index_1(HttpServletResponse res, HttpServletRequest req)
-    {
-       return "redirect:/login";
+    public String index_1(HttpServletResponse res, HttpServletRequest req) {
+        return "redirect:/login";
     }
 
 
     @RequestMapping("/index")
-    public String index(HttpServletResponse res, HttpServletRequest req)
-    {
+    public String index(HttpServletResponse res, HttpServletRequest req) {
         return "redirect:/login";
     }
 
     @RequestMapping("/login")
-    public ModelAndView login(HttpServletResponse res, HttpServletRequest req)
-    {
+    public ModelAndView login(HttpServletResponse res, HttpServletRequest req) {
         ModelAndView mav = new ModelAndView();
         String UserAgent = req.getHeader("User-Agent");
-//        if(BrowserUtil.checkUserAgent(UserAgent))
-//        {
-//            mav.setViewName("pc/login/login");
-//        }
-//        else {
-//            mav.setViewName("/common/s_mode");
-//        }
         mav.setViewName("pc/login/login");
         return mav;
     }
 
 
-
-
+    @RequestMapping("/admin/main")
+    public ModelAndView admin_main(HttpServletResponse res, HttpServletRequest req) throws Exception {
+        ModelAndView mav = new ModelAndView();
+        String UserAgent = req.getHeader("User-Agent");
+        mav.setViewName("/admin/main");
+        return mav;
+    }
 }

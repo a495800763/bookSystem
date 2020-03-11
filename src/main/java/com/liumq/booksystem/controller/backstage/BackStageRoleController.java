@@ -26,7 +26,7 @@ public class BackStageRoleController {
         return mav;
     }
 
-    @RequestMapping("/manage")
+    @RequestMapping("/add")
     public ModelAndView add() throws Exception {
         ModelAndView mav = new ModelAndView();
         mav.addObject("btn_test", "添加");
@@ -35,7 +35,7 @@ public class BackStageRoleController {
         return mav;
     }
 
-    @RequestMapping("/manage")
+    @RequestMapping("/edit")
     public ModelAndView edit(@RequestParam(value = "id", required = false) Integer id) throws Exception {
         ModelAndView mav = new ModelAndView();
 

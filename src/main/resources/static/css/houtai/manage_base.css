@@ -1,0 +1,42 @@
+body{
+    padding: 3px;
+}
+
+er{
+    font-style: normal;color: #c00;
+}
+ber{
+    font-style: normal;color: #c00;font-weight: bold;
+}
+
+
+eg{
+    font-style: normal;color: #009688;
+}
+beg{
+    font-style: normal;color: #009688;font-weight: bold;
+}
+
+
+eb{
+    font-style: normal;color: #1E9FFF;
+}
+beb{
+    font-style: normal;color: #1E9FFF;font-weight: bold;
+}
+
+/*修改表格左右内边框为0*/
+.layui-table-cell{
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: center;
+}
+/*修改表格上面的10px为0*/
+.layui-table-view{
+    margin:0px 0 !important;
+}
+
+.layui-table-cell .layui-form-checkbox[lay-skin=primatry]
+{
+    top:4px;
+}

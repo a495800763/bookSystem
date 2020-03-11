@@ -60,6 +60,13 @@ public class AdminRoleController {
         return result;
     }
 
+    /**
+     *
+     * @param page 默认1
+     * @param limit 每页的数据量
+     * @return
+     * @throws Exception
+     */
     @ResponseBody
     @RequestMapping("/list")
     public Map<String, Object> list(@RequestParam(value = "page", required = false) Integer page,
@@ -68,7 +75,8 @@ public class AdminRoleController {
                                     HttpServletRequest request) throws Exception {
         Map<String, Object> map = new HashMap<String, Object>();
 
-        List<Role> userList = roleService.list(map, page - 1, limit);
+        Integer currentPage = page-1;
+        List<Role> userList = roleService.list(map, currentPage, limit);
         long total = roleService.getTotal(map);
         map.put("data", userList);
         map.put("count", total);

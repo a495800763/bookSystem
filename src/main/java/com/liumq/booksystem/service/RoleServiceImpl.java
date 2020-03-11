@@ -3,6 +3,10 @@ package com.liumq.booksystem.service;
 import com.liumq.booksystem.dao.MenuDao;
 import com.liumq.booksystem.dao.RoleDao;
 import com.liumq.booksystem.entity.Role;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -39,12 +43,14 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public List<Role> list(Map<String, Object> map, Integer page, Integer pageSize) {
-        return null;
+        Pageable pageable =  PageRequest.of(page,pageSize, Sort.Direction.ASC,"orderNo");
+        Page<Role> list= roleDao.findAll(pageable);
+        return list.getContent();
     }
 
     @Override
     public Long getTotal(Map<String, Object> map) {
-        return 1L;
+        return roleDao.count();
     }
 
     @Override

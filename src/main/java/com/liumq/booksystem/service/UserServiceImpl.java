@@ -43,6 +43,11 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
+    @Override
+    public void delete(Integer id) {
+        userDao.deleteById(id);
+    }
+
     /**
      * fillInfo
      * @param curr

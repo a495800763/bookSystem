@@ -28,8 +28,6 @@ import java.util.Map;
 @RequestMapping("/admin/user")
 public class AdminUserController {
 
-    @Resource
-    private UserDao userDao;
 
     @Autowired
     private UserService userService;
@@ -43,8 +41,10 @@ public class AdminUserController {
             result.put("success", false);
             result.put("msg", bindingResult.getFieldError().getDefaultMessage());
         } else {
-            user.setPwd(CryptographyUtil.md5(user.getPwd(), "java"));//对存入数据库的密码进行加密加盐
-            user.setCreateDateTime(new Date());//这里两个是取当前存入数据库的时间插入数据库
+            //对存入数据库的密码进行加密加盐
+            user.setPwd(CryptographyUtil.md5(user.getPwd(), "java"));
+            //这里两个是取当前存入数据库的时间插入数据库
+            user.setCreateDateTime(new Date());
             user.setUpdateDateTime(new Date());
             userService.save(user);
             result.put("seccess", true);
@@ -60,7 +60,6 @@ public class AdminUserController {
         if(bindingResult.hasErrors()){
             result.put("success", false);
             result.put("msg", bindingResult.getFieldError().getDefaultMessage());
-            return result;
         }else {
             if (!user.getPwd().equals(null)){
                 user.setPwd(CryptographyUtil.md5(user.getPwd(),"java"));}//对存入数据库的密码进行加密加盐
@@ -68,8 +67,8 @@ public class AdminUserController {
             userService.update(user);
             result.put("success", true);
             result.put("msg", "添加成功");
-            return result;
         }
+        return result;
     }
 
     @ResponseBody
@@ -112,7 +111,7 @@ public class AdminUserController {
         String[] idsStr = ids.split(",");
         JSONObject result = new JSONObject();
         for (int i = 0; i < idsStr.length; i++) {
-            //userMapper.deleteUser(Integer.parseInt(idsStr[i]));
+            userService.delete(Integer.parseInt(idsStr[i]));
         }
         result.put("success", true);
         return result;

@@ -20,7 +20,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public void add(Role role) {
-         roleDao.save(role);
+        roleDao.save(role);
     }
 
     @Override
@@ -33,6 +33,11 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
+    public Role findId(Integer id) {
+        return roleDao.findId(id);
+    }
+
+    @Override
     public List<Role> list(Map<String, Object> map, Integer page, Integer pageSize) {
         return null;
     }
@@ -40,6 +45,11 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public Long getTotal(Map<String, Object> map) {
         return 1L;
+    }
+
+    @Override
+    public void delete(Integer id) {
+        roleDao.deleteById(id);
     }
 
 

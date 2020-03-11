@@ -21,5 +21,7 @@ public interface UserService {
 
     Long getTotal (Map<String,Object> map);
 
+    void delete (Integer id);
+
 
 }

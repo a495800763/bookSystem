@@ -8,17 +8,17 @@ import java.util.Map;
 public interface RoleService {
 
 
-     void add (Role role);
+    void add(Role role);
 
-     Integer update(Role role);
+    Integer update(Role role);
 
+    Role findId (Integer id);
 
-     List<Role>  list(Map<String, Object> map, Integer page, Integer pageSize);
+    List<Role> list(Map<String, Object> map, Integer page, Integer pageSize);
 
-     Long getTotal(Map<String, Object> map);
+    Long getTotal(Map<String, Object> map);
 
-
-
+    void delete(Integer id);
 
 
 }

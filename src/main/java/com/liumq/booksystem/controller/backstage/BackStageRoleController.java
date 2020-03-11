@@ -29,7 +29,7 @@ public class BackStageRoleController {
     @RequestMapping("/add")
     public ModelAndView add() throws Exception {
         ModelAndView mav = new ModelAndView();
-        mav.addObject("btn_test", "添加");
+        mav.addObject("btn_text", "添加");
         mav.addObject("save_url", "/admin/role/add");
         mav.setViewName("/admin/page/role/add_update");
         return mav;
@@ -42,7 +42,7 @@ public class BackStageRoleController {
         Role role = roleService.findId(id);
 
         mav.addObject("role", role);
-        mav.addObject("btn_test", "修改");
+        mav.addObject("btn_text", "修改");
         mav.addObject("save_url", "/admin/role/update?id=" + id);
         mav.setViewName("/admin/page/role/add_update");
         return mav;

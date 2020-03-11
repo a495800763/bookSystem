@@ -35,9 +35,9 @@
         layer.open({
             type: 2,
             title: '添加',
-            shadeClose: false,
-            shade: 0.8,
-            area: [w+'px', h+'px'],
+            shadeClose: false, // 是否可以点击空白处关闭
+            shade: 0.8, //透明度
+            area: [w+'px', h+'px'], // 尺寸
             content: '/houtai/role/add' //iframe的url
         });
     }
@@ -167,8 +167,6 @@
                 {checkbox: true, fixed: true}
                 ,{field:'orderNo', title: '排序号', width:60,style:'font-size: 12px;' }
                 ,{field:'name', title: '角色名称', width:90,style:'font-size: 12px;' }
-                ,{field:'remark', title: '备注', width:100 ,style:'font-size: 12px;'}
-
                 ,{field:'createDateTime', title: '创建时间', width:140 ,style:'font-size: 12px;'}
                 ,{field:'updateDateTime', title: '修改时间', width:140 ,style:'font-size: 12px;'}
 

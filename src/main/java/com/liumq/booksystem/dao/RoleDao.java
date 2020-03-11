@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface RoleDao extends JpaRepository<Role,Integer>, JpaSpecificationExecutor<Role> {
 
-    @Query(value = "select * from role where is = ?1",nativeQuery = true)
+    @Query(value = "select * from role where id = ?1",nativeQuery = true)
     Role findId (Integer id);
 }

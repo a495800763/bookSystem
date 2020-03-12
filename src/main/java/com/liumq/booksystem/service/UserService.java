@@ -13,6 +13,8 @@ public interface UserService {
 
     User findByName (String name);
 
+    User findById (Integer id);
+
     void save(User user);
 
     void update(User user);

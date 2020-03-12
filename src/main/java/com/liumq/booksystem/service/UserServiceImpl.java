@@ -2,6 +2,10 @@ package com.liumq.booksystem.service;
 
 import com.liumq.booksystem.dao.UserDao;
 import com.liumq.booksystem.entity.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -20,27 +24,35 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findById(Integer id) {
+        return userDao.findId(id);
+    }
+
+    @Override
     public void save(User user) {
         userDao.save(user);
     }
 
     @Override
-    public void  update(User user) {
-       User origin = userDao.findId(user.getId());
+    public void update(User user) {
+        User origin = userDao.findId(user.getId());
 
-       user = replace(user,origin);
-       userDao.save(user);
-       return;
+        user = replace(user, origin);
+        userDao.save(user);
+        return;
     }
 
     @Override
     public List<User> list(Map<String, Object> map, Integer page, Integer pageSize) {
-        return null;
+        Pageable pageable = PageRequest.of(page, pageSize, Sort.Direction.ASC, "orderNo");
+        Page<User> list = userDao.findAll(pageable);
+        List<User> users = list.getContent();
+        return users;
     }
 
     @Override
     public Long getTotal(Map<String, Object> map) {
-        return null;
+        return userDao.count();
     }
 
     @Override
@@ -50,6 +62,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * fillInfo
+     *
      * @param curr
      * @param origin
      * @return
@@ -75,6 +88,9 @@ public class UserServiceImpl implements UserService {
         }
         if (curr.getRole() == null) {
             curr.setRole(origin.getRole());
+        }
+        if (curr.getUpdateDateTime() == null) {
+            curr.setUpdateDateTime(origin.getUpdateDateTime());
         }
         return curr;
 

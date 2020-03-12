@@ -55,13 +55,13 @@ public class AdminUserController {
 
     @RequestMapping("/update")
     @ResponseBody
-    public JSONObject update(@Valid User user, BindingResult bindingResult,HttpServletRequest request){
+    public JSONObject update(@Valid User user, BindingResult bindingResult,HttpServletResponse response,HttpServletRequest request){
         JSONObject result = new JSONObject();
         if(bindingResult.hasErrors()){
             result.put("success", false);
             result.put("msg", bindingResult.getFieldError().getDefaultMessage());
         }else {
-            if (!user.getPwd().equals(null)){
+            if (user.getPwd() != null){
                 user.setPwd(CryptographyUtil.md5(user.getPwd(),"java"));}//对存入数据库的密码进行加密加盐
             user.setUpdateDateTime(new Date());
             userService.update(user);

@@ -43,7 +43,7 @@ public class User {
     }
 
     public void setId(Integer id) {
-        id = id;
+        this.id = id;
     }
 
     public String getName() {

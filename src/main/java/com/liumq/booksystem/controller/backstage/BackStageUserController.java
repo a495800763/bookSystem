@@ -53,9 +53,7 @@ public class BackStageUserController {
         List<Role> roleList = roleService.list(map, 0, 1000);
         mav.addObject("roleList", roleList);
 
-
         User user = userService.findById(id);
-
         mav.addObject("user", user);
         mav.addObject("btn_text", "修改");
         mav.addObject("save_url", "/admin/user/update?id=" + id);

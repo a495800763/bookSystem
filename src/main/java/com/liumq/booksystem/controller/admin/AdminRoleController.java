@@ -61,8 +61,7 @@ public class AdminRoleController {
     }
 
     /**
-     *
-     * @param page 默认1
+     * @param page  默认1
      * @param limit 每页的数据量
      * @return
      * @throws Exception
@@ -75,7 +74,7 @@ public class AdminRoleController {
                                     HttpServletRequest request) throws Exception {
         Map<String, Object> map = new HashMap<String, Object>();
 
-        Integer currentPage = page-1;
+        Integer currentPage = page - 1;
         List<Role> userList = roleService.list(map, currentPage, limit);
         long total = roleService.getTotal(map);
         map.put("data", userList);
@@ -91,13 +90,12 @@ public class AdminRoleController {
         String[] idsStr = ids.split(",");
         JSONObject result = new JSONObject();
         for (int i = 0; i < idsStr.length; i++) {
-            try{
-            roleService.delete(Integer.parseInt(idsStr[i]));}
-            catch (Exception e)
-            {
+            try {
+                roleService.delete(Integer.parseInt(idsStr[i]));
+            } catch (Exception e) {
                 e.printStackTrace();
                 result.put("success", false);
-                result.put("msg","有用户正在使用此角色");
+                result.put("msg", "有用户正在使用此角色");
                 return result;
             }
         }

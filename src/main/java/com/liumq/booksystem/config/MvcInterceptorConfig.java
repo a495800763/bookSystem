@@ -13,7 +13,7 @@ public class MvcInterceptorConfig  extends WebMvcConfigurationSupport {
     protected void addInterceptors(InterceptorRegistry registry) {
         System.out.println("==========MyInterceptor===========");
         //取消拦截静态文件，否则样式加载不出来
-        registry.addInterceptor(myInterceptor).addPathPatterns("/**").excludePathPatterns("/static/**","/jq/**","/layui-v2.5.6/**","/Vue/**");
+        registry.addInterceptor(myInterceptor).addPathPatterns("/**").excludePathPatterns("/static/**","/jq/**","/layui-v2.5.6/**","/Vue/**","/image/**");
 
         super.addInterceptors(registry);
     }

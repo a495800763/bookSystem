@@ -32,6 +32,7 @@ public class ShiroConfig {
         // anon: 匿名访问
         filterChainDefinitionMap.put("/static/**", "anon");
         filterChainDefinitionMap.put("/user/login", "anon");
+        filterChainDefinitionMap.put("/static/image/base/**", "anon");
         // filterChainDefinitionMap.put("/drawImage", "anon");
 
 

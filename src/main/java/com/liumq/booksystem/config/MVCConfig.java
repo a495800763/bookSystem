@@ -1,14 +1,11 @@
 package com.liumq.booksystem.config;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 
 
 @Configuration
-public class MVCConfig implements WebMvcConfigurer {
+public class MVCConfig  implements WebMvcConfigurer  {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
@@ -22,6 +19,7 @@ public class MVCConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/devsoft1/**").addResourceLocations("file:D:/devsoft1/");
+      //  registry.addResourceHandler("/image/**").addResourceLocations(("file:E:/booksystem/src/main/resources/static/image/"));
     }
 
     @Override

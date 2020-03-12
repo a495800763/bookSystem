@@ -15,3 +15,42 @@ function checkWindow(){
         w=(document.body.offsetWidth-60);
     }
 }
+
+function getTableSelected(){
+    var selected = table.checkStatus("table");
+    if(selected.data.length<1)
+    {
+        layer.msg("请选择内容");
+        return;
+    }
+
+    var ids="";
+    if(selected.data.length>0){
+        $.each(selected.data,function (i,val) {
+            ids=ids+val.id+",";
+        });
+    }
+
+    ids  = ids.substring(0,ids.length-1);
+    global_ids=ids;
+    global_ids_len=selected.data.length;
+}
+
+//删除
+function delSelected()
+{
+    global_ids="";
+    global_ids_len=0;
+    getTableSelected();
+    if(global_ids_len>0)
+    {
+
+        layer.confirm('确认要删除这'+global_ids_len+'个数据吗?', {
+            btn: ['确定删除', '取消']
+        }, function () {
+              del(global_ids);
+        }, function () {
+               layer.msg('您选择了取消 ');
+        });
+    }
+}

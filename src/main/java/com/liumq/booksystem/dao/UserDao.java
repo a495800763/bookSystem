@@ -8,8 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 public interface UserDao extends JpaRepository<User,Integer>, JpaSpecificationExecutor<User> {
 
     @Query(value="select * from user where name = ?1",nativeQuery = true)
-    public User findByName (String name );
+    User findByName (String name );
 
     @Query(value="select * from user where id = ?1",nativeQuery = true)
-    public User findId (Integer id);
+    User findId (Integer id);
 }

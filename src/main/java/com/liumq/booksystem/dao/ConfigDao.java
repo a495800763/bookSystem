@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface ConfigDao extends JpaRepository<Config,Integer> {
     @Query(value="select * from config where id = ?1",nativeQuery = true)
-    public Config findId(Integer id);
+     Config findId(Integer id);
 }

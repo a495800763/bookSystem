@@ -139,7 +139,7 @@
     <script type="text/html" id="table_bar">
         <div class="layui-btn-group">
             <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
-            <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="set_menu">管理子菜单</a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="manage">管理子菜单</a>
         </div>
     </script>
     <script type="text/html" ,id="format_state">
@@ -179,7 +179,7 @@
                 , url: '/admin/menu/list'
                 , height: 'full-40'
                 , totalRow: true
-                , cols: [[
+                , cols: [  [
                     {checkbox: true, fixed: true}
                     , {field: 'orderNo', title: '排序号', width: 80, style: 'font-size: 12px;'}
                     , {field: 'name', title: '菜单名称', width: 150, style: 'font-size: 12px;'}
@@ -188,8 +188,9 @@
                     , {field: 'icon', title: '图标', width: 100, style: 'font-size: 12px;'}
                     , {field: 'permission', title: '权限', width: 100, style: 'font-size: 12px;'}
                     , {fixed: 'type', width: 80, title: '打开方式', toolbar: '#table_bar'}
+                    , {fixed: 'divId', width: 80, title: 'layuiId', toolbar: '#table_bar'}
                     , {field: 'pId', title: '父节点Id', width: 80, style: 'font-size: 12px;'}
-                ]]
+                ]  ]
                 , id: 'table'
                 , page: true
                 , limits: [500, 1000, 2000, 3000],
@@ -202,11 +203,17 @@
                     , layEvent = obj.event; //获得 lay-event 对应的值
                 if (layEvent === 'edit') {
                     edit(data.id);
-                } else if (layEvent === 'set_menu') {
-                    set_menu(data.id);
                 } else if (layEvent = 'manage') {
                     manage(data.id);
                 }
+            });
+
+
+            table.on('edit(table)',function (obj) {
+                var value = obj.value,
+                    data=obj.data,
+                    field =obj.field;
+                table_edit_update(data.id,field,value);
             });
 
         });

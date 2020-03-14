@@ -33,6 +33,14 @@ public class Menu {
     @Column(length = 10)
     private Integer type;//选项卡还是窗口打开
 
+    public String getDivId() {
+        return divId;
+    }
+
+    public void setDivId(String divId) {
+        this.divId = divId;
+    }
+
     @Column(length = 50)
     private String divId; // layui 菜单Id
 

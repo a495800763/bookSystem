@@ -43,19 +43,71 @@
         <div style="padding: 10px;" class="layui-form layui-form-pane" action="">
 
             <div class="layui-form-item">
-                <label class="layui-form-label">角色名称</label>
+                <label class="layui-form-label">菜单名称</label>
                 <div class="layui-input-block">
-                    <input type="text"  name="name" id="name" th:value="${role?.name}"  autocomplete="off"
-                           placeholder="请输入  角色名称" class="layui-input">
+                    <input type="text"  name="name" id="name" th:value="${menu?.name}"  autocomplete="off"
+                           placeholder="请输入  菜单名称" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">排序号</label>
+                <label class="layui-form-label">菜单地址</label>
                 <div class="layui-input-block">
-                    <input type="text" name="orderNo" id="orderNo" th:value="${role?.orderNo}"  autocomplete="off"
-                           placeholder="请输入  排序号" class="layui-input">
+                    <input type="text" name="url" id="url" th:value="${menu?.url}"  autocomplete="off"
+                           placeholder="请输入  菜单地址" class="layui-input">
                 </div>
             </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">节点类型</label>
+                <div class="layui-input-block">
+                    <select id="state" name="intsrest" lay-filter="aihao">
+                        <option value="0">根节点</option>
+                        <option value="1">叶子节点</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">图标</label>
+                <div class="layui-input-block">
+                    <input type="text" name="icon" id="icon" th:value="${menu?.icon}"  autocomplete="off"
+                           placeholder="请输入  图标" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">图标</label>
+                <div class="layui-input-block">
+                    <input type="text" name="permissions" id="permissions" th:value="${menu?.permissions}"  autocomplete="off"
+                           placeholder="请输入  图标" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">打开方式</label>
+                <div class="layui-input-block">
+                    <select id="type" name="intsrest" lay-filter="aihao">
+                        <option value="0">选项卡打开</option>
+                        <option value="1">新窗口打开</option>
+                        <option value="2">弹窗口打开</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">layuiId</label>
+                <div class="layui-input-block">
+                    <input type="text" name="divId" id="divId" th:value="${menu?.divId}"  autocomplete="off"
+                           placeholder="请输入  图标" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">排序号</label>
+                <div class="layui-input-block">
+                    <input type="text" name="orderNo" id="orderNo" th:value="${menu?.v}"  autocomplete="off"
+                           placeholder="请输入  图标" class="layui-input">
+                </div>
+            </div>
+
 
             <div class="layui-form-item">
                 <div class="layui-input-block">

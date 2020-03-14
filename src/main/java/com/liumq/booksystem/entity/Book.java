@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
-@Table(name="book")
+@Table(name = "book")
 public class Book {
 
     @Id
@@ -20,7 +20,7 @@ public class Book {
     @Column(length = 20)
     private String name;
     @NotEmpty(message = "单价不能为空")
-    @Column(precision = 10,scale = 2)
+    @Column(precision = 10, scale = 2)
     private BigDecimal price;
     @NotEmpty(message = "排序号不能为空")
     @Column(length = 10)
@@ -38,7 +38,7 @@ public class Book {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDateTime;
     @ManyToOne
-    @JoinColumn(name="bookTypeId")
+    @JoinColumn(name = "bookTypeId")
     private BookType bookType;
 
     public BookType getBookType() {
@@ -81,7 +81,7 @@ public class Book {
         this.orderNo = orderNo;
     }
 
-    @JsonSerialize(using=CustomDateTimeSerializer.class)
+    @JsonSerialize(using = CustomDateTimeSerializer.class)
     public Date getCreateDateTime() {
         return createDateTime;
     }
@@ -90,7 +90,7 @@ public class Book {
         this.createDateTime = createDateTime;
     }
 
-    @JsonSerialize(using=CustomDateTimeSerializer.class)
+    @JsonSerialize(using = CustomDateTimeSerializer.class)
     public Date getUpdateDateTime() {
         return updateDateTime;
     }

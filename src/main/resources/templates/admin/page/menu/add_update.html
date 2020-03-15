@@ -15,6 +15,16 @@
     </head>
     <script  th:inline="javascript">
         /*<![CDATA[*/
+
+        $(function () {
+            if("[[${menu?.state}]]"!="null"){
+                $("#state").val([[${menu?.state}]]);
+            }
+            if("[[${menu?.type}]]"!="null"){
+                $("#type").val([[${menu?.type}]]);
+            }
+        });
+
         var save_url = [[${save_url}]];
         function save() {
             var index = layer.msg('提交中，请稍候', {

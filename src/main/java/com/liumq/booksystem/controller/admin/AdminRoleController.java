@@ -114,6 +114,7 @@ public class AdminRoleController {
 
     /**
      * 拿节点数据供layui 的tree 组件使用
+     *
      * @param roleId
      * @param response
      * @return
@@ -123,29 +124,46 @@ public class AdminRoleController {
     @RequestMapping("/getCheckedMenuData")
     public List<JSONObject> getCheckedTreeMenu(@RequestParam(value = "roleId", required = false) Integer roleId, HttpServletResponse response) throws Exception {
         List<JSONObject> list = new ArrayList<JSONObject>();
-
+        //拿根节点
         List<Menu> menuList = menuService.findByPId(-1);
+
         for (Menu menu : menuList) {
             JSONObject node = new JSONObject();
-
-
             node.put("id", menu.getId());
-            node.put("text", menu.getName());
-            node.put("state", "close");
-            RoleMenu roleMenu = roleMenuService.findByRoleIdAndMenuId(roleId, menu.getId());
-            if (roleMenu == null) {
-                node.put("checked", false);
-            } else {
-                node.put("checked", true);
-            }
-
+            node.put("title", menu.getName());
+            node.put("spread", true);
             node.put("children", getchildren(menu.getId(), roleId));
             list.add(node);
         }
         return list;
     }
 
-    private Object getchildren(Integer id, Integer roleId) {
-        return null;
+    /**
+     * 辅助方法 用于得到treenode 的children
+     *
+     * @param
+     * @param roleId
+     * @return
+     * @throws Exception
+     */
+    private List<JSONObject> getchildren(Integer pId, Integer roleId) throws Exception {
+        List<Menu> menuList = menuService.findByPId(pId);
+        List<JSONObject> list = new ArrayList<JSONObject>();
+        for (Menu menu : menuList) {
+            JSONObject node = new JSONObject();
+            node.put("id", menu.getId());
+            node.put("title", menu.getName());
+            //           node.put("state", "opend");
+//            RoleMenu roleMenu = roleMenuService.findByRoleIdAndMenuId(roleId,menu.getId());
+//            if(roleMenu==null)
+//            {
+//                node.put("checked", false);
+//            }else{
+//                node.put("checked", true);
+//            }
+//            node.put("children", getchildren(menu.getId(), roleId));
+            list.add(node);
+        }
+        return list;
     }
 }

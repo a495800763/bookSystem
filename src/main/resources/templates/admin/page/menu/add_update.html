@@ -25,9 +25,17 @@
             // 此处input id 对应拿到值
             var name =$("#name").val();
             var orderNo = $("#orderNo").val();
-            console.log(name);
-            console.log(orderNo);
-            $.post(save_url, {name:name,orderNo:orderNo
+            var divId =  $("#divId").val();
+            var icon =  $("#icon").val();
+            //取得mav中的pId
+            var pId =[[${pId}]];
+            console.log("pId is :"+ pId);
+            var permissions =  $("#permissions").val();
+            var state=$("#state").val();
+            var type=$("#type").val();
+            var url=$("#v").val();
+            $.post(save_url, {name:name,orderNo:orderNo,divId:divId,icon:icon,
+                pId:pId,permissions:permissions,state:state,type:type,url:url
             }, function(result) {
                 if (result.success) {
                     window.parent.closeDlg(result.msg);
@@ -73,10 +81,10 @@
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">图标</label>
+                <label class="layui-form-label">权限</label>
                 <div class="layui-input-block">
                     <input type="text" name="permissions" id="permissions" th:value="${menu?.permissions}"  autocomplete="off"
-                           placeholder="请输入  图标" class="layui-input">
+                           placeholder="请输入  权限" class="layui-input">
                 </div>
             </div>
 
@@ -96,15 +104,15 @@
                 <label class="layui-form-label">layuiId</label>
                 <div class="layui-input-block">
                     <input type="text" name="divId" id="divId" th:value="${menu?.divId}"  autocomplete="off"
-                           placeholder="请输入  图标" class="layui-input">
+                           placeholder="请输入  layuiId" class="layui-input">
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label">排序号</label>
                 <div class="layui-input-block">
-                    <input type="text" name="orderNo" id="orderNo" th:value="${menu?.v}"  autocomplete="off"
-                           placeholder="请输入  图标" class="layui-input">
+                    <input type="text" name="orderNo" id="orderNo" th:value="${menu?.orderNo}"  autocomplete="off"
+                           placeholder="请输入  排序号" class="layui-input">
                 </div>
             </div>
 

@@ -20,7 +20,6 @@ public class CryptographyUtil {
      * @param salt
      *            盐值
      */
-
     //这个方法主要是为了在我们将密码传入数据库时进行加密使用
     public static String md5(String pwd, String salt) {
         return new Md5Hash(pwd, salt).toString();

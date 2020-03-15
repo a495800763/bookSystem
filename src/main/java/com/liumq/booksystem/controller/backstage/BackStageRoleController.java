@@ -47,4 +47,17 @@ public class BackStageRoleController {
         mav.setViewName("/admin/page/role/add_update");
         return mav;
     }
+
+    @RequestMapping("/set_menu")
+    public ModelAndView set_menu(@RequestParam(value = "id",required = false) Integer id) throws Exception{
+        ModelAndView mav = new ModelAndView();
+
+        Role role = roleService.findId(id);
+
+        mav.addObject("role", role);
+        mav.addObject("btn_text", "修改");
+        mav.addObject("save_url", "/admin/role/update?id=" + id);
+        mav.setViewName("/admin/page/role/set_menu");
+        return mav;
+    }
 }

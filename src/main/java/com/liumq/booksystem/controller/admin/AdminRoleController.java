@@ -1,8 +1,14 @@
 package com.liumq.booksystem.controller.admin;
 
+import com.liumq.booksystem.entity.Menu;
 import com.liumq.booksystem.entity.Role;
+import com.liumq.booksystem.entity.RoleMenu;
 import com.liumq.booksystem.entity.User;
+import com.liumq.booksystem.service.MenuService;
+import com.liumq.booksystem.service.RoleMenuService;
 import com.liumq.booksystem.service.RoleService;
+import jdk.vm.ci.meta.Value;
+import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -14,10 +20,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("/admin/role")
@@ -25,6 +28,12 @@ public class AdminRoleController {
 
     @Resource
     private RoleService roleService;
+
+    @Resource
+    private MenuService menuService;
+
+    @Resource
+    private RoleMenuService roleMenuService;
 
     @ResponseBody
     @RequestMapping("/add")
@@ -101,5 +110,42 @@ public class AdminRoleController {
         }
         result.put("success", true);
         return result;
+    }
+
+    /**
+     * 拿节点数据供layui 的tree 组件使用
+     * @param roleId
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    @ResponseBody
+    @RequestMapping("/getCheckedMenuData")
+    public List<JSONObject> getCheckedTreeMenu(@RequestParam(value = "roleId", required = false) Integer roleId, HttpServletResponse response) throws Exception {
+        List<JSONObject> list = new ArrayList<JSONObject>();
+
+        List<Menu> menuList = menuService.findByPId(-1);
+        for (Menu menu : menuList) {
+            JSONObject node = new JSONObject();
+
+
+            node.put("id", menu.getId());
+            node.put("text", menu.getName());
+            node.put("state", "close");
+            RoleMenu roleMenu = roleMenuService.findByRoleIdAndMenuId(roleId, menu.getId());
+            if (roleMenu == null) {
+                node.put("checked", false);
+            } else {
+                node.put("checked", true);
+            }
+
+            node.put("children", getchildren(menu.getId(), roleId));
+            list.add(node);
+        }
+        return list;
+    }
+
+    private Object getchildren(Integer id, Integer roleId) {
+        return null;
     }
 }

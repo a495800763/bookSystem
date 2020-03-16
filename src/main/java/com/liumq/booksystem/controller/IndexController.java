@@ -90,10 +90,30 @@ public class IndexController {
 
         }
 
+        mav.addObject("treeList",list);
         return mav;
     }
 
     private Object getChildren(Integer pId, Integer roleId) throws Exception {
-        return null;
+        Map<String, Object> map = new HashMap<>();
+        map.put("pId", pId);
+        List<Menu> menuList = menuService.list(map, 0, 100);
+        List<JSONObject>  list = new ArrayList<>();
+        for(Menu menu:menuList)
+        {
+            RoleMenu roleMenu = roleMenuService.findByRoleIdAndMenuId(roleId,menu.getId());
+            if(roleMenu!=null)
+            {
+                JSONObject node = new JSONObject();
+                node.put("id",menu.getId());
+                node.put("text",menu.getName());
+                node.put("url",menu.getUrl());
+                node.put("type",menu.getType());
+                node.put("icon",menu.getIcon());
+                node.put("divId",menu.getDivId());
+                list.add(node);
+            }
+        }
+        return list;
     }
 }

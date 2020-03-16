@@ -20,5 +20,5 @@ public interface MenuService {
 
      Integer delete(Integer id);
 
-     List<Menu> findByPId (Integer pId);
+     List<Menu> findBypId (Integer pId);
 }

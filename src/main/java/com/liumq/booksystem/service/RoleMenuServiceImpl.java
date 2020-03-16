@@ -2,10 +2,14 @@ package com.liumq.booksystem.service;
 
 import com.liumq.booksystem.dao.RoleMenuDao;
 import com.liumq.booksystem.entity.RoleMenu;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
+@Service("RoleMenuService")
 public class RoleMenuServiceImpl implements RoleMenuService {
 
-
+    @Resource
     private RoleMenuDao roleMenuDao;
 
 

@@ -30,7 +30,6 @@ public interface RoleMenuDao extends JpaRepository<RoleMenu, Integer>, JpaSpecif
     @Query(value="delete from RoleMenu  where roleId =?1",nativeQuery = true)
     Integer deleteByRoleId(Integer roleId);
 
-
     @Query(value = "select * from RoleMenu  where id = ?1",nativeQuery = true)
     RoleMenu findId(Integer id);
 }

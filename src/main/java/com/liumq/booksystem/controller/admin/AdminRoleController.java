@@ -121,7 +121,7 @@ public class AdminRoleController {
     public List<JSONObject> getCheckedTreeMenu(@RequestParam(value = "roleId", required = false) Integer roleId, HttpServletResponse response) throws Exception {
         List<JSONObject> list = new ArrayList<JSONObject>();
         //拿根节点
-        List<Menu> menuList = menuService.findByPId(-1);
+        List<Menu> menuList = menuService.findBypId(-1);
 
         for (Menu menu : menuList) {
             JSONObject node = new JSONObject();
@@ -143,7 +143,7 @@ public class AdminRoleController {
      * @throws Exception
      */
     private List<JSONObject> getchildren(Integer pId, Integer roleId) throws Exception {
-        List<Menu> menuList = menuService.findByPId(pId);
+        List<Menu> menuList = menuService.findBypId(pId);
         List<JSONObject> list = new ArrayList<JSONObject>();
         for (Menu menu : menuList) {
             JSONObject node = new JSONObject();

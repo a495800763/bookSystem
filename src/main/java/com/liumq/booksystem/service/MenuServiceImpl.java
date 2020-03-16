@@ -81,8 +81,8 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public List<Menu> findByPId(Integer pId) {
-       return menuDao.findByPId(pId);
+    public List<Menu> findBypId(Integer pId) {
+       return menuDao.findBypId(pId);
     }
 
 

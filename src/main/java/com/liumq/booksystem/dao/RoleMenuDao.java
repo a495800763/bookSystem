@@ -17,7 +17,7 @@ public interface RoleMenuDao extends JpaRepository<RoleMenu, Integer>, JpaSpecif
      * @param menuId
      * @return
      */
-    @Query(value = "select * from RoleMenu  where roleId=?1 and menuId = ?2",nativeQuery = true)
+    @Query(value = "select * from RoleMenu  where role_Id=?1 and menu_Id = ?2",nativeQuery = true)
     RoleMenu findByRoleIdAndMenuId(Integer roleId,Integer menuId);
 
     /**
@@ -27,7 +27,7 @@ public interface RoleMenuDao extends JpaRepository<RoleMenu, Integer>, JpaSpecif
      */
     @Modifying
     @Transactional
-    @Query(value="delete from RoleMenu  where roleId =?1",nativeQuery = true)
+    @Query(value="delete from RoleMenu  where role_Id =?1",nativeQuery = true)
     Integer deleteByRoleId(Integer roleId);
 
     @Query(value = "select * from RoleMenu  where id = ?1",nativeQuery = true)

@@ -2,6 +2,7 @@ package com.liumq.booksystem.controller.admin;
 
 import com.liumq.booksystem.entity.Menu;
 import com.liumq.booksystem.entity.Role;
+import com.liumq.booksystem.entity.RoleMenu;
 import com.liumq.booksystem.service.MenuService;
 import com.liumq.booksystem.service.RoleMenuService;
 import com.liumq.booksystem.service.RoleService;
@@ -149,17 +150,33 @@ public class AdminRoleController {
             JSONObject node = new JSONObject();
             node.put("id", menu.getId());
             node.put("title", menu.getName());
-            //           node.put("state", "opend");
-//            RoleMenu roleMenu = roleMenuService.findByRoleIdAndMenuId(roleId,menu.getId());
-//            if(roleMenu==null)
-//            {
-//                node.put("checked", false);
-//            }else{
-//                node.put("checked", true);
-//            }
-//            node.put("children", getchildren(menu.getId(), roleId));
+            RoleMenu roleMenu = roleMenuService.findByRoleIdAndMenuId(roleId, menu.getId());
+            if (roleMenu == null) {
+                node.put("checked", false);
+            } else {
+                node.put("checked", true);
+            }
             list.add(node);
         }
         return list;
+    }
+
+    /**
+     * @param roleId
+     * @param menuIds=1,2,3,4,5,6,7
+     * @return
+     * @throws Exception
+     */
+    @ResponseBody
+    @RequestMapping("/updateMenu")
+    public JSONObject updateMenu(@RequestParam(value = "roleId", required = false) Integer roleId,
+                                 @RequestParam(value = "menuIds", required = false) String menuIds) throws Exception {
+        JSONObject result = new JSONObject();
+
+        roleService.updateMenu(roleId, menuIds);
+
+        result.put("success", true);
+        result.put("msg", "修改成功");
+        return result;
     }
 }

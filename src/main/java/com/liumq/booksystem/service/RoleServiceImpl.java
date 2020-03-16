@@ -3,6 +3,8 @@ package com.liumq.booksystem.service;
 import com.liumq.booksystem.dao.MenuDao;
 import com.liumq.booksystem.dao.RoleDao;
 import com.liumq.booksystem.entity.Role;
+import com.liumq.booksystem.entity.RoleMenu;
+import com.liumq.booksystem.util.StringUtil;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -10,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +24,9 @@ public class RoleServiceImpl implements RoleService {
 
     @Resource
     private MenuDao menuDao;
+
+    @Resource
+    private RoleMenuService roleMenuService;
 
     @Override
     public void add(Role role) {
@@ -56,6 +62,32 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public void delete(Integer id) {
         roleDao.deleteById(id);
+    }
+
+    @Override
+    public Integer updateMenu(Integer roleId, String menuIds) {
+        String [] idsStr = menuIds.split(",");
+        RoleMenu roleMenu;
+
+        roleMenuService.deleteByRoleId(roleId);
+
+        for(int i =0;i<idsStr.length;i++)
+        {
+            if(StringUtil.isNotEmpty(idsStr[i]))
+            {
+                roleMenu = new RoleMenu();
+                roleMenu.setRole(roleDao.findId(roleId));
+                roleMenu.setMenu(menuDao.findId(Integer.parseInt(idsStr[i])));
+                roleMenuService.add(roleMenu);
+            }
+        }
+
+
+        Role role = roleDao.findId(roleId);
+        role.setUpdateDateTime(new Date());
+        roleDao.save(role);
+
+        return 1;
     }
 
 

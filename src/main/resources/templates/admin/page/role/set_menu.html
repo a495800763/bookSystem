@@ -19,11 +19,12 @@
     var tree;
     layui.use([ 'tree', 'laypage', 'layer','form', 'table', 'carousel',
         'upload', 'element' ], function() {
-        table = layui.tree;
+        tree = layui.tree;
     });
 
     function  sub() {
-        var checkedData = tree.getChecked('demoTree');
+        var checkedData = tree.getChecked('thisTree');
+        //console.log(checkedData);
         var ids="";
         if(checkedData.length>0)
         {
@@ -31,7 +32,7 @@
               ids=ids+val.id+",";
               if(val.children)
               {
-                  $each(val.children,function (i,val) {
+                  $.each(val.children,function (i,val) {
                       ids=ids+val.id+",";
                   });
               }
@@ -40,14 +41,33 @@
 
         ids = ids.substring(0,ids.length-1);
         console.log(ids);
+        var index = layer.msg('提交中，请稍候', {
+            icon : 16,
+            time : false,
+            shade : 0.8
+        });
+        $.post("/admin/role/updateMenu", {roleId:[[${role.id}]],menuIds:ids
+        }, function(result) {
+            layer.closeAll();
+            if (result.success) {
+                window.parent.closeDlg(result.msg);
+            } else {
+                layer.msg(result.msg);
+            }
+        }, 'json');
+
     }
 </script>
+
+
 <body id="app">
 <div id="tree" class="demo-tree-more"></div>
 <div>
     <button onclick="sub()" type="button" class="layui-btn">提交 </button>
 </div>
 </body>
+
+
 
 <script>
     /*<![CDATA[*/
@@ -70,7 +90,7 @@
                 elem:"#tree"
                 ,data:result
                 ,showCheckbox:true
-                ,id:'demoTree'
+                ,id:'thisTree'
                 ,isJump:true
                 ,click:function (obj) {
                    var data = obj.data;

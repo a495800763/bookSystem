@@ -20,5 +20,7 @@ public interface RoleService {
 
     void delete(Integer id);
 
+    Integer updateMenu (Integer roleId,String menuIds);
+
 
 }

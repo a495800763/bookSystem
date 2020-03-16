@@ -9,4 +9,6 @@ public interface RoleMenuService {
     Integer deleteByRoleId(Integer roleId);
 
     RoleMenu findId(Integer id);
+
+    Integer add(RoleMenu roleMenu);
 }

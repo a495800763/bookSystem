@@ -27,4 +27,10 @@ public class RoleMenuServiceImpl implements RoleMenuService {
     public RoleMenu findId(Integer id) {
         return roleMenuDao.findId(id);
     }
+
+    @Override
+    public Integer add(RoleMenu roleMenu) {
+        roleMenuDao.save(roleMenu);
+        return 1;
+    }
 }

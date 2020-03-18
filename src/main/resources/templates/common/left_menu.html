@@ -6,10 +6,10 @@
 
         <ul class="layui-nav layui-nav-tree" lay-filter="left_menu">
             <li class="layui-nav-item layui-nav-itemed" th:each="node : ${treeList}">
-                <a href="javascript:;" th:text="${node.text}"></a>
+                <a href="javascript:;" th:text="${node.text}"> <i class="layui-icon layui-icon-menu-fill"></i></a>
                 <dl class="layui-nav-child" th:each="item:${node.children}">
                     <dd th:dd_text="${item.text}" th:type="${item.type}" th:url="${item.url}" th:id="${item.divId}"><a href="#"><i
-                            class="layui-icon" th:utext="&#xe601;"></i>&nbsp;[[${item.text}]]</a></dd>
+                            class="layui-icon layui-icon-rate"></i>&nbsp;[[${item.text}]]</a></dd>
 
                 </dl>
             </li>

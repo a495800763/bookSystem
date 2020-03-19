@@ -5,6 +5,7 @@ import com.liumq.booksystem.entity.Role;
 import com.liumq.booksystem.entity.User;
 import com.liumq.booksystem.service.RoleService;
 import com.liumq.booksystem.service.UserService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +24,7 @@ public class BackStageUserController {
     @Resource
     private RoleService roleService;
 
+    @RequiresPermissions(value = "用户管理")
     @RequestMapping("/manage")
     public ModelAndView manage() throws Exception {
         ModelAndView mav = new ModelAndView();

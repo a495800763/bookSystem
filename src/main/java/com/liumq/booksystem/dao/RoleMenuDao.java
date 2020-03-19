@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 
 public interface RoleMenuDao extends JpaRepository<RoleMenu, Integer>, JpaSpecificationExecutor<RoleMenu> {
@@ -32,4 +33,7 @@ public interface RoleMenuDao extends JpaRepository<RoleMenu, Integer>, JpaSpecif
 
     @Query(value = "select * from RoleMenu  where id = ?1",nativeQuery = true)
     RoleMenu findId(Integer id);
+
+    @Query(value = "select * from RoleMenu  where role_Id =?1",nativeQuery = true)
+    List<RoleMenu> findByRoleId(Integer roleId);
 }

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+
+    <div th:include="/common/layui"></div>
+    <div th:include="/common/jq"></div>
+    <style>
+        .layui-form-item {
+            margin-bottom: 3px;
+        }
+    </style>
+
+</head>
+<script  th:inline="javascript">
+    /*<![CDATA[*/
+    var save_url = [[${save_url}]];
+    function save() {
+        var index = layer.msg('提交中，请稍候', {
+            icon : 16,
+            time : false,
+            shade : 0.8
+        });
+        // 此处input id 对应拿到值
+        var name =$("#name").val();
+        var orderNo = $("#orderNo").val();
+        console.log(name);
+        console.log(orderNo);
+        $.post(save_url, {name:name,orderNo:orderNo
+        }, function(result) {
+            if (result.success) {
+                window.parent.closeDlg(result.msg);
+            } else {
+                layer.msg(result.msg);
+            }
+        }, 'json');
+    }
+
+    /*]]>*/
+</script>
+<body id="app">
+<div style="padding: 10px;" class="layui-form layui-form-pane" action="">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">角色名称</label>
+        <div class="layui-input-block">
+            <input type="text"  name="name" id="name" th:value="${role?.name}"  autocomplete="off"
+                   placeholder="请输入  角色名称" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">排序号</label>
+        <div class="layui-input-block">
+            <input type="text" name="orderNo" id="orderNo" th:value="${role?.orderNo}"  autocomplete="off"
+                   placeholder="请输入  排序号" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" th:text="${btn_text}"  lay-submit="" lay-filter="demo1"
+                    onclick="save()"></button>
+        </div>
+    </div>
+
+</div>
+
+</body>
+
+<script th:inline="none">
+    layui.use([ 'laydate', 'laypage', 'layer', 'table', 'carousel', 'upload',
+        'element' ], function() {
+        var laydate = layui.laydate //日期
+            , laypage = layui.laypage //分页
+            , layer = layui.layer //弹层
+            , table = layui.table //表格
+            , carousel = layui.carousel //轮播
+            , upload = layui.upload //上传
+            , element = layui.element; //元素操作
+
+    });
+</script>
+
+</html>

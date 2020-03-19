@@ -16,4 +16,6 @@ public interface BookTypeService {
     void add(BookType bookType);
 
     void deleteById(Integer id);
+
+    BookType findId(Integer id);
 }

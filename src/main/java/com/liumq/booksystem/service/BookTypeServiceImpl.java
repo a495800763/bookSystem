@@ -50,6 +50,11 @@ public class BookTypeServiceImpl implements BookTypeService {
         bookTypeDao.deleteById(id);
     }
 
+    @Override
+    public BookType findId(Integer id) {
+         return bookTypeDao.findId(id);
+    }
+
 
     private BookType replace(BookType curr, BookType origin) {
         if (curr.getName() == null) {

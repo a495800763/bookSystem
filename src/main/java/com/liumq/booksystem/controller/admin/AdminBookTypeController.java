@@ -13,6 +13,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +35,7 @@ public class AdminBookTypeController {
             result.put("success", false);
             result.put("msg", bindingResult.getFieldError().getDefaultMessage());
         } else {
+            bookType.setCreateDateTime(new Date());
             bookTypeService.add(bookType);
             result.put("success", true);
             result.put("msg", "添加成功");
@@ -49,7 +51,7 @@ public class AdminBookTypeController {
             result.put("success", false);
             result.put("msg", bindingResult.getFieldError().getDefaultMessage());
         } else {
-
+            bookType.setUpdateDateTime(new Date());
             bookTypeService.update(bookType);
             result.put("success", true);
             result.put("msg", "添加成功");

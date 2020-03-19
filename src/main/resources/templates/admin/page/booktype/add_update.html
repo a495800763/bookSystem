@@ -43,16 +43,16 @@
 <div style="padding: 10px;" class="layui-form layui-form-pane" action="">
 
     <div class="layui-form-item">
-        <label class="layui-form-label">角色名称</label>
+        <label class="layui-form-label">图书类型名称</label>
         <div class="layui-input-block">
-            <input type="text"  name="name" id="name" th:value="${role?.name}"  autocomplete="off"
-                   placeholder="请输入  角色名称" class="layui-input">
+            <input type="text"  name="name" id="name" th:value="${bookType?.name}"  autocomplete="off"
+                   placeholder="请输入  图书类型名称" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">排序号</label>
         <div class="layui-input-block">
-            <input type="text" name="orderNo" id="orderNo" th:value="${role?.orderNo}"  autocomplete="off"
+            <input type="text" name="orderNo" id="orderNo" th:value="${bookType?.orderNo}"  autocomplete="off"
                    placeholder="请输入  排序号" class="layui-input">
         </div>
     </div>

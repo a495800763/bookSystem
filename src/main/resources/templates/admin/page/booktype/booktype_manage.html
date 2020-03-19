@@ -38,7 +38,7 @@
             shadeClose: false, // 是否可以点击空白处关闭
             shade: 0.8, //透明度
             area: [w+'px', h+'px'], // 尺寸
-            content: '/houtai/role/add' //iframe的url
+            content: '/houtai/book/type/add' //iframe的url
         });
     }
 
@@ -53,25 +53,9 @@
             shadeClose: false,
             shade: 0.8,
             area: [w+'px', h+'px'],
-            content: '/houtai/role/edit?id='+id //iframe的url
+            content: '/houtai/book/type/edit?id='+id //iframe的url
         });
     }
-
-    //设置 菜单
-    function set_menu(id){
-        w = 300;
-        h = 600;
-        checkWindow();
-        layer.open({
-            type: 2,
-            title: '设置菜单',
-            shadeClose: false,
-            shade: 0.8,
-            area: [w+'px', h+'px'],
-            content: '/houtai/role/set_menu?id='+id //iframe的url
-        });
-    }
-
 
     //子窗口调用 的  关闭窗口方法
     function closeDlg(msg){
@@ -94,7 +78,7 @@
         var index = layer.load(1, {
             shade: [0.1,'#fff'] //0.1透明度的白色背景
         });
-        $.post('/admin/role/delete',{ids:ids},function(result){
+        $.post('/houtai/book/type/delete',{ids:ids},function(result){
             if(result.success){
                 layer.closeAll();
                 layer.msg('删除成功');
@@ -143,7 +127,6 @@
 <script type="text/html" id="table_bar">
     <div class="layui-btn-group">
         <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
-        <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="set_menu">设置菜单</a>
     </div>
 </script>
 
@@ -160,17 +143,16 @@
             , element = layui.element; //元素操作
         table.render({
             elem: '#table'
-            ,url: '/admin/role/list'
+            ,url: '/admin/book/type/list'
             ,height: 'full-40'
             ,totalRow: true
             ,cols: [ [
                 {checkbox: true, fixed: true}
                 ,{field:'id', title: 'ID', width:60,style:'font-size: 12px;' }
                 ,{field:'orderNo', title: '排序号', width:60,style:'font-size: 12px;' }
-                ,{field:'name', title: '角色名称', width:90,style:'font-size: 12px;' }
+                ,{field:'name', title: '图书类型名称', width:90,style:'font-size: 12px;' }
                 ,{field:'createDateTime', title: '创建时间', width:140 ,style:'font-size: 12px;'}
                 ,{field:'updateDateTime', title: '修改时间', width:140 ,style:'font-size: 12px;'}
-
                 ,{fixed:'right', width:120,title: '操作',  toolbar: '#table_bar'}
             ] ]
             ,id: 'table'

@@ -1,5 +1,7 @@
-# bookSystem
+# 图书管理系统|| 权限管理系统
+## springboot
+## shiro
+## thymeleaf
+## JPA+MySQL
 
-## 09/27/47
-
-## 10/10/03
+### bilibili [AV号](http://www.bilibili.com/av59265965)                     

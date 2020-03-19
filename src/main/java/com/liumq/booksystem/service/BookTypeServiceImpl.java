@@ -2,7 +2,6 @@ package com.liumq.booksystem.service;
 
 import com.liumq.booksystem.dao.BookTypeDao;
 import com.liumq.booksystem.entity.BookType;
-import com.liumq.booksystem.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -39,6 +38,16 @@ public class BookTypeServiceImpl implements BookTypeService {
     @Override
     public Long getTotal(Map<String, Object> map) {
         return bookTypeDao.count();
+    }
+
+    @Override
+    public void add(BookType bookType) {
+          bookTypeDao.save(bookType);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        bookTypeDao.deleteById(id);
     }
 
 

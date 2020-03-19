@@ -2,7 +2,6 @@ package com.liumq.booksystem.controller.admin;
 
 
 import com.liumq.booksystem.entity.Menu;
-import com.liumq.booksystem.entity.Role;
 import com.liumq.booksystem.service.MenuService;
 import com.liumq.booksystem.util.StringUtil;
 import net.sf.json.JSONObject;

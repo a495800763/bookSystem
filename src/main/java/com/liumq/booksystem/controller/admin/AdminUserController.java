@@ -1,10 +1,8 @@
 package com.liumq.booksystem.controller.admin;
 
 
-import com.liumq.booksystem.dao.UserDao;
 import com.liumq.booksystem.entity.User;
 import com.liumq.booksystem.service.UserService;
-import com.liumq.booksystem.service.UserServiceImpl;
 import com.liumq.booksystem.util.CryptographyUtil;
 import com.liumq.booksystem.util.StringUtil;
 import net.sf.json.JSONObject;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;

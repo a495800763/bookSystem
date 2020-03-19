@@ -5,18 +5,14 @@ import com.liumq.booksystem.entity.RoleMenu;
 import com.liumq.booksystem.entity.User;
 import com.liumq.booksystem.service.MenuService;
 import com.liumq.booksystem.service.RoleMenuService;
-import com.liumq.booksystem.util.BrowserUtil;
-import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
-import javax.jws.WebParam;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

@@ -2,7 +2,6 @@ package com.liumq.booksystem.service;
 
 import com.liumq.booksystem.dao.ConfigDao;
 import com.liumq.booksystem.entity.Config;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

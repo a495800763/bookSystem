@@ -1,6 +1,5 @@
 package com.liumq.booksystem.controller.backstage;
 
-import com.liumq.booksystem.dao.UserDao;
 import com.liumq.booksystem.entity.Role;
 import com.liumq.booksystem.entity.User;
 import com.liumq.booksystem.service.RoleService;

@@ -7,9 +7,13 @@ import java.util.Map;
 
 public interface BookTypeService {
 
-      void update(BookType bookType);
+    void update(BookType bookType);
 
-      List<BookType> listByCondition (Map<String,Object> map , Integer page, Integer pageSize);
+    List<BookType> listByCondition(Map<String, Object> map, Integer page, Integer pageSize);
 
-      Long getTotal (Map<String,Object> map);
+    Long getTotal(Map<String, Object> map);
+
+    void add(BookType bookType);
+
+    void deleteById(Integer id);
 }

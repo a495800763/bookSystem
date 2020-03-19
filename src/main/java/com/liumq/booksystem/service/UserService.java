@@ -1,10 +1,6 @@
 package com.liumq.booksystem.service;
 
-import com.liumq.booksystem.dao.ConfigDao;
-import com.liumq.booksystem.dao.UserDao;
 import com.liumq.booksystem.entity.User;
-
-import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 

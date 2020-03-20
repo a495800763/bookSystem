@@ -30,7 +30,6 @@ public class UserController {
      */
     @ResponseBody
     @RequestMapping("/login")
-   // @RequiresPermissions(value="添加用户权限")//value 值在MyReaml中赋予
     public Object login(String name, String password)throws Exception {
         JSONObject result = new JSONObject();
 
@@ -47,6 +46,7 @@ public class UserController {
             result.put("success", true);
             result.put("msg","登陆成功");
             User user = userService.findByName(name);
+            //把当前用户信息存到session中
             SecurityUtils.getSubject().getSession().setAttribute("currentUser", user); //把当前用户信息存到session中
         } catch (UnknownAccountException e) {
             result.put("success", false);

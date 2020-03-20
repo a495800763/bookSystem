@@ -1,8 +1,17 @@
 package com.liumq.booksystem.enumpac;
 
 public enum menuType {
+    /**
+     * 当前选项卡打开
+     */
     THISTAB(0),
+    /**
+     * 新窗口打开
+     */
     NEWWINDOW(1),
+    /**
+     * 其他窗口打开
+     */
     OTHERWINDOW(2);
 
 

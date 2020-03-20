@@ -59,7 +59,8 @@ public class AdminUserController {
             result.put("msg", bindingResult.getFieldError().getDefaultMessage());
         }else {
             if (user.getPwd() != null){
-                user.setPwd(CryptographyUtil.md5(user.getPwd(),"java"));}//对存入数据库的密码进行加密加盐
+                //对存入数据库的密码进行加密加盐
+                user.setPwd(CryptographyUtil.md5(user.getPwd(),"java"));}
             user.setUpdateDateTime(new Date());
             userService.update(user);
             result.put("success", true);
@@ -70,7 +71,7 @@ public class AdminUserController {
 
     @ResponseBody
     @RequestMapping("/set_new_pwd")
-    public JSONObject set_new_pwd(User user,HttpServletRequest request)throws Exception {
+    public JSONObject setNewPwd(User user,HttpServletRequest request)throws Exception {
         JSONObject result = new JSONObject();
         user.setUpdateDateTime(new Date());
         if(StringUtil.isNotEmpty(user.getPwd())){

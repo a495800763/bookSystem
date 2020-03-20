@@ -13,7 +13,9 @@ public class Config {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(length = 50)
-    //website Name
+    /**
+     * website Name
+     */
     private String webName;
 
     public Integer getId() {

@@ -34,7 +34,7 @@ public class IndexController {
     private RoleMenuService roleMenuService;
 
     @RequestMapping("/")
-    public String index_1(HttpServletResponse res, HttpServletRequest req) {
+    public String index1(HttpServletResponse res, HttpServletRequest req) {
         return "redirect:/login";
     }
 
@@ -47,16 +47,16 @@ public class IndexController {
     @RequestMapping("/login")
     public ModelAndView login(HttpServletResponse res, HttpServletRequest req) {
         ModelAndView mav = new ModelAndView();
-        String UserAgent = req.getHeader("User-Agent");
+        String userAgent = req.getHeader("User-Agent");
         mav.setViewName("pc/login/login");
         return mav;
     }
 
 
     @RequestMapping("/admin/main")
-    public ModelAndView admin_main(HttpServletResponse res, HttpServletRequest req) throws Exception {
+    public ModelAndView adminMain(HttpServletResponse res, HttpServletRequest req) throws Exception {
         ModelAndView mav = new ModelAndView();
-        String UserAgent = req.getHeader("User-Agent");
+        String userAgent = req.getHeader("User-Agent");
         mav.setViewName("/admin/main");
 
         //使用shiro 从session 中得到user信息

@@ -11,27 +11,45 @@ public class Menu {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+
+    /**
+     * parentId
+     */
     @Column(length = 20)
-    //parentId
     private Integer pId;
 
     @Column(length = 50)
     private String name;
 
+    /**
+     * 菜单地址
+     */
     @Column(length = 200)
-    private String url;   //菜单地址
+    private String url;
 
+    /**
+     * 菜单节点类型
+     */
     @Column(length = 10)
-    private Integer state; //菜单节点类型
+    private Integer state;
 
+    /**
+     * 图标
+     */
     @Column(length = 100)
-    private String icon; //图标
+    private String icon;
 
+    /**
+     * 对应的shiro权限
+     */
     @Column(length = 100)
-    private String permissions;//对应的shiro权限
+    private String permissions;
 
+    /**
+     * //选项卡还是窗口打开
+     */
     @Column(length = 10)
-    private Integer type;//选项卡还是窗口打开
+    private Integer type;
 
     public String getDivId() {
         return divId;
@@ -41,8 +59,11 @@ public class Menu {
         this.divId = divId;
     }
 
+    /**
+     * layui 菜单Id
+     */
     @Column(length = 50)
-    private String divId; // layui 菜单Id
+    private String divId;
 
     @NotNull(message = "排序号不能为空")
     @Column(length = 10)

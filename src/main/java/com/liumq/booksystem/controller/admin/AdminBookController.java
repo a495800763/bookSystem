@@ -20,6 +20,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/admin/book")
+
 public class AdminBookController {
 
     @Resource
@@ -36,7 +37,6 @@ public class AdminBookController {
         } else {
             //这里两个是取当前存入数据库的时间插入数据库
             book.setCreateDateTime(new Date());
-            // user.setUpdateDateTime(new Date());
             bookService.add(book);
             result.put("seccess", true);
             result.put("msg", "添加成功");

@@ -49,7 +49,7 @@ public class BackStageRoleController {
     }
 
     @RequestMapping("/set_menu")
-    public ModelAndView set_menu(@RequestParam(value = "id",required = false) Integer id) throws Exception{
+    public ModelAndView setMenu(@RequestParam(value = "id",required = false) Integer id) throws Exception{
         ModelAndView mav = new ModelAndView();
 
         Role role = roleService.findId(id);

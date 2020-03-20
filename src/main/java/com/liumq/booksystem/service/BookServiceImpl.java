@@ -2,14 +2,18 @@ package com.liumq.booksystem.service;
 
 import com.liumq.booksystem.dao.BookDao;
 import com.liumq.booksystem.entity.Book;
-import com.liumq.booksystem.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.util.List;
 import java.util.Map;
 
@@ -31,14 +35,32 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> listByCondition(Map<String, Object> map, Integer page, Integer pageSize) {
         Pageable pageable = PageRequest.of(page, pageSize, Sort.Direction.ASC, "orderNo");
-        Page<Book> list = bookDao.findAll(pageable);
-        List<Book> books = list.getContent();
-        return books;
+        Page<Book> books = bookDao.findAll(new Specification<Book>() {
+            @Override
+            public Predicate toPredicate(Root<Book> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+                Predicate predicate = criteriaBuilder.conjunction();
+                if (map.get("bookType") != null) {
+                    predicate.getExpressions().add(criteriaBuilder.equal(root.get("bookType"), map.get("bookType")));
+                }
+                return predicate;
+            }
+        }, pageable);
+        return  books.getContent();
     }
 
     @Override
     public Long getTotal(Map<String, Object> map) {
-        return bookDao.count();
+        Long count = bookDao.count(new Specification<Book>() {
+            @Override
+            public Predicate toPredicate(Root<Book> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+                Predicate predicate = criteriaBuilder.conjunction();
+                if (map.get("bookType") != null) {
+                    predicate.getExpressions().add(criteriaBuilder.equal(root.get("bookType"), map.get("bookType")));
+                }
+                return predicate;
+            }
+        });
+        return count;
     }
 
     @Override

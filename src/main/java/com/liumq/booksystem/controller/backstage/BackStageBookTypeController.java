@@ -1,9 +1,7 @@
 package com.liumq.booksystem.controller.backstage;
 
 import com.liumq.booksystem.entity.BookType;
-import com.liumq.booksystem.entity.Menu;
 import com.liumq.booksystem.service.BookTypeService;
-import com.liumq.booksystem.service.MenuService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +14,7 @@ import javax.annotation.Resource;
 public class BackStageBookTypeController {
 
     @Resource
-    private BookTypeService BookTypeService;
+    private BookTypeService bookTypeService;
 
     @RequestMapping("/manage")
     public ModelAndView manage() throws Exception {
@@ -39,7 +37,7 @@ public class BackStageBookTypeController {
     public ModelAndView edit(@RequestParam(value = "id", required = false) Integer id) {
         ModelAndView mav = new ModelAndView();
 
-        BookType bookType = BookTypeService.findId(id);
+        BookType bookType = bookTypeService.findId(id);
 
         mav.addObject("bookType", bookType);
         mav.addObject("btn_text", "修改");
